@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+
+require('console.table');
+require('colors');
+
+const program = require('commander');
+const moment = require('moment');
+
+const Manager = require('../core/manager');
+
+let home_addr, work_addr, home_time, work_time, home_range = null;
+
+program.version('0.1.0')
+    .arguments('<home_addr_arg> <work_addr_arg> <home_time_arg> <work_time_arg> <home_range_arg>')
+    .action(function(home_addr_arg, work_addr_arg, home_time_arg, work_time_arg, home_range_arg) {
+        home_addr = home_addr_arg;
+        work_addr = work_addr_arg;
+        home_time = home_time_arg;
+        work_time = work_time_arg;
+        home_range = home_range_arg;
+    });
+
+program.parse(process.argv);
+
+if (!home_addr || !work_addr || !home_time || !work_time || !home_range) {
+    error('\n  Missing arguments');
+}
+
+const manager = new Manager();
+
+manager.start({
+    home_addr,
+    work_addr,
+    home_time,
+    work_time,
+    home_range
+}).then((parsed) => {
+    const table = [];
+
+    Object.keys(parsed).forEach((key) => {
+        parsed[key].forEach((d) => {
+
+            const row = {
+                Origin: d.origin,
+                Time: moment(d.time).format('HH:mm dddd DD MMM'),
+                Distance: d.distance,
+                Duration: d.duration
+            };
+
+            if (d.min) {
+                row.Time = moment(d.time).format('HH:mm dddd DD MMM').green;
+                row.Distance = d.distance.green;
+                row.Duration = d.duration.green;
+            } else if (d.max) {
+                row.Time = moment(d.time).format('HH:mm dddd DD MMM').red;
+                row.Distance = d.distance.red;
+                row.Duration = d.duration.red;
+            }
+
+            table.push(row);
+        });
+    })
+
+    console.table(table);
+    process.exit(0);
+}).catch((err) => {
+    error(err.message);
+});
+
+// -------------------------------------------------------------------------------------
+
+function error(text) {
+    console.log(text);
+    program.help();
+    process.exit(1);
+}

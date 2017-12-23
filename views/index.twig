@@ -1,0 +1,83 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+  
+    {% include "includes/header.twig" %}
+    
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Commuting every day?</h2>
+                    <p class="lead">Let's take a moment to look at your commuting data</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <section id="services" class="services bg-primary">
+        <div class="container">
+            <hr class="small">
+            <form class="form-horizontal" role="form" id="form_result">
+                <div id="form_error">
+                    
+                </div>
+                <div class="row text-center">
+                    <div class="col-lg-4 col-md-4 col-lg-offset-1 col-md-offset-1">
+                        <div class="form-group">
+                            <div class="service-item">
+                                <i class="fa fa-home fa-5x"></i>                                    
+                                <h4>
+                                    <strong>Home address</strong>
+                                </h4>
+                                <input type="text" class="form-control no-error" id="home" name="home_addr" placeholder="Home Address" value="">
+                                <select name="home_time" class="select-date form-control">
+                                </select>
+                                <select name="home_range" class="select-date form-control">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-lg-offset-2 col-md-offset-2">
+                        <div class="form-group">
+                            <div class="service-item">
+                                <i class="fa fa-building fa-5x"></i>                                    
+                                <h4>
+                                    <strong>Work address</strong>
+                                </h4>
+                                <input type="text" class="form-control no-error" id="work" name="work_addr" placeholder="Work Address" value="">
+                                <select name="work_time" class="select-date form-control">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <input id="submit" name="submit" type="submit" value="Send" class="btn btn-default">
+                        <svg version="1.1" id="loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                            width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+                            <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+                                s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+                                c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"/>
+                            <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+                                C22.32,8.481,24.301,9.057,26.013,10.047z">
+                                <animateTransform attributeType="xml"
+                                attributeName="transform"
+                                type="rotate"
+                                from="0 20 20"
+                                to="360 20 20"
+                                dur="0.5s"
+                                repeatCount="indefinite"/>
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <!-- /.container -->
+            </form>
+        </div>
+    </section>
+
+    {% include "includes/footer.twig" %}
+{% endblock %}
