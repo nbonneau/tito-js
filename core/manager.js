@@ -13,10 +13,6 @@ const BASE_URL = 'https://maps.googleapis.com/maps/api/directions/json';
 
 class Manager {
 
-    constructor() {
-        console.time('total');
-    }
-
     start(data) {
 
         if (!new RegExp(/^([0-1]?[0-9]|2[0-3])(:[0-5][0-9])?$/g).test(data.home_time)) {
@@ -76,7 +72,6 @@ class Manager {
                     }
                 }).catch(err => reject(err));
             }, (err, results) => {
-                console.timeEnd('total');
                 if (err) {
                     reject(err);
                 } else {

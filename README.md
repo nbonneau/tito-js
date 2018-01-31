@@ -65,3 +65,15 @@ To debug app just use DEBUG when you start your app:
 ```bash
 DEBUG=tito-js:* npm start
 ```
+
+## Commands
+
+* Get data
+```bash
+Usage: node bin/get-data [options] <home_addr_arg> <work_addr_arg> <home_time_arg> <work_time_arg> <home_range_arg>
+
+  Options:
+
+    -V, --version  output the version number
+    -h, --help     output usage information
+```

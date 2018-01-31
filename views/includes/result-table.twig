@@ -1,3 +1,26 @@
 <table>
-
+    <thead>
+        <tr>
+            <td>Origin</td>
+            <td>Time</td>
+            <td>Monday</td>
+            <td>Tuesday</td>
+            <td>Wednesday</td>
+            <td>Thursday</td>
+            <td>Friday</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data %}
+        <tr>
+            <td>{{ row.origin }}</td>
+            <td>{{ row.time }}</td>
+            <td>{{ row.monday }}</td>
+            <td>{{ row.tuesday }}</td>
+            <td>{{ row.wednesday }}</td>
+            <td>{{ row.thursday }}</td>
+            <td>{{ row.friday }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
 </table>

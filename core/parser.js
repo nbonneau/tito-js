@@ -19,6 +19,7 @@ class DataParser {
                     max: false,
                     day: d.day,
                     time: d.time.format(),
+                    timeHour: d.time.format('HH:mm'),
                     origin: d.from,
                     destination: d.to,
                     distance: d.json.routes[0].legs[0].distance.text,

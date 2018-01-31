@@ -26,7 +26,12 @@ router.get('/', function(req, res, next) {
     const fn = new Manager();
 
     fn.start(data)
-        .then((parsed) => res.render('includes/result-table', { data: parsed }))
+        .then((parsed) => {
+
+
+
+            res.render('includes/result-table', { data: parsed })
+        })
         .catch(err => res.status(400).render('includes/error-block', { error: {}, message: err.message }));
 });
 
